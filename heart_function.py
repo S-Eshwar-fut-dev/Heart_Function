@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Initialize the HeartPlot class with a given range and resolution.
 class Heart_plot:
     def __init__(self, x_range=(-2, 2), y_range=(-2, 2), resolution=400):
         self.x_range = x_range
@@ -9,10 +10,12 @@ class Heart_plot:
         self.x = np.linspace(self.x_range[0], self.x_range[1], self.resolution)
         self.y = np.linspace(self.y_range[0], self.y_range[1], self.resolution)
         self.X, self.Y = np.meshgrid(self.x, self.y)
-
+        
+    # Define the implicit function for the heart-shaped curve.
     def heart_function(self, x, y):
         return (x**2 + y**2 - 1)**3 - (x**2) * (y**3)
-
+    
+    #Plot the heart curve using a contour plot where the function equals zero.
     def plot_heart(self):
         Z = self.heart_function(self.X, self.Y)
         plt.figure(figsize=(9, 9))  # Set figure size
